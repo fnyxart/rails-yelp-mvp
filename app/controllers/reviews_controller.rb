@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review_params)
+    @review = Review.new(params_review)
     @review.restaurant = @restaurant
     if @review.save
       redirect_to restaurant_path(@restaurant)
@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
   # Private methods
   private
 
-  def :set_restaurant_for_review
+  def set_restaurant_for_review
     @restaurant = Restaurant.find(params[:restaurant_id])
   end
 
