@@ -1,2 +1,35 @@
-<h1>Restaurants#show</h1>
-<p>Find me in app/views/restaurants/show.html.erb</p>
+<<p>
+  <strong>Name:</strong>
+  <%= @restaurant.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @restaurant.address %>
+</p>
+
+<p>
+  <strong>Contact number:</strong>
+  <%= @restaurant.phone_number %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @restaurant.category %>
+</p>
+
+
+
+<%= link_to fa_icon('undo', text: " Back to restaurants list"), restaurants_path %> |
+<%= link_to fa_icon('plus', text: " Add a new review"), new_restaurant_review_path(@restaurant) %>
+
+<h3 class="my-3">Reviews</h3>
+
+<ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item">
+      <%="⭐" * review.rating %>
+      <%= review.content %>
+    </li>
+  <% end %>
+</ul>
